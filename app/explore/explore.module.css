@@ -1,0 +1,25 @@
+.root {
+  min-height: 100vh;
+  background: var(--bg0);
+}
+.main {
+  padding: 100px 32px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+.label {
+  font-size: 14px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+}
+.sub {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 2;
+}

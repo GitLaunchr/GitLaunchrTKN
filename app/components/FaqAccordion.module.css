@@ -1,0 +1,87 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.item {
+  border: 2px solid var(--border);
+  border-bottom: none;
+  background: var(--panel);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.item:first-child {
+  border-top: 2px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: 2px solid var(--border);
+}
+
+.item--open {
+  border-color: var(--primary);
+  box-shadow: 0 0 16px rgba(78, 161, 255, 0.1);
+  z-index: 1;
+  position: relative;
+}
+
+.item--open + .item {
+  border-top: none;
+}
+
+/* TRIGGER */
+.trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  font-family: var(--font-pixel);
+  color: var(--text);
+  transition: background 0.1s;
+}
+
+.trigger:hover {
+  background: rgba(78, 161, 255, 0.04);
+}
+
+.triggerIcon {
+  font-size: 7px;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+
+.item--open .triggerIcon {
+  color: var(--cyan);
+}
+
+.triggerText {
+  font-size: 8px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+/* PANEL */
+.panel {
+  overflow: hidden;
+  transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panelInner {
+  padding: 0 18px 18px 37px;
+  font-size: 7px;
+  color: var(--muted);
+  line-height: 2.2;
+  border-left: 2px solid var(--primary);
+  margin: 0 18px 0 33px;
+}

@@ -1,0 +1,414 @@
+/* ════════════════════════════════════════════════════════════
+   page.module.css — GitLaunchr Home (unified, full scroll)
+════════════════════════════════════════════════════════════ */
+
+.root { position: relative; width: 100%; }
+
+/* ════════════════════════════════════════════════════════════
+   HERO — skyline behind, full viewport height
+════════════════════════════════════════════════════════════ */
+.heroWrap {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 28px;
+  padding: 120px 32px 80px;
+}
+
+.heroPre {
+  font-size: 7px;
+  color: var(--primary);
+  letter-spacing: 0.25em;
+  border: 1px solid rgba(78,161,255,0.3);
+  padding: 5px 14px;
+  background: rgba(78,161,255,0.06);
+  animation: fadeDown 0.6s ease both;
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.heroLine1 {
+  display: block;
+  font-size: clamp(32px, 7vw, 68px);
+  color: var(--primary);
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  text-shadow:
+    4px 4px 0 #112244,
+    0 0 40px rgba(78,161,255,0.6),
+    0 0 100px rgba(78,161,255,0.2);
+}
+
+.heroLine2 {
+  display: block;
+  font-size: clamp(13px, 2.6vw, 24px);
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-shadow: 0 0 24px rgba(79,227,255,0.4);
+}
+
+.heroSub {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 2.2;
+  max-width: 500px;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  background: rgba(11,18,32,0.75);
+  border: 2px solid var(--border);
+  backdrop-filter: blur(6px);
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 16px 32px;
+}
+
+.heroStatVal   { font-size: 18px; letter-spacing: 0.04em; }
+.heroStatLabel { font-size: 6px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.heroStatDiv   { width: 1px; height: 44px; background: var(--border); }
+
+.scrollHint {
+  font-size: 6px;
+  color: var(--border);
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  animation: fadeUp 0.7s 0.55s ease both, scrollBounce 2s 1.5s ease-in-out infinite;
+  transition: color 0.15s;
+}
+.scrollHint:hover { color: var(--muted); }
+
+/* ════════════════════════════════════════════════════════════
+   SHARED SECTION — solid bg covers fixed canvas
+════════════════════════════════════════════════════════════ */
+.section {
+  position: relative;
+  z-index: 10;
+  background: var(--bg1);
+  border-top: 2px solid var(--border);
+  padding: 88px 48px;
+}
+
+.sectionAlt {
+  background: var(--bg0);
+}
+
+.inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  margin-bottom: 56px;
+}
+
+.sectionTag   { font-size: 7px; color: var(--primary); letter-spacing: 0.25em; }
+.sectionTitle { font-size: clamp(14px, 2.5vw, 22px); color: var(--text); letter-spacing: 0.06em; line-height: 1.4; }
+.sectionSub   { font-size: 8px; color: var(--muted); line-height: 2.2; max-width: 560px; }
+
+/* ════════════════════════════════════════════════════════════
+   HOW IT WORKS — vertical timeline
+════════════════════════════════════════════════════════════ */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.timelineRow {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+}
+
+.timelineLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineNum {
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(78,161,255,0.1);
+  z-index: 1;
+}
+
+.timelineConnector {
+  width: 2px;
+  flex: 1;
+  min-height: 28px;
+  margin: 4px 0;
+}
+
+.timelineCard {
+  background: var(--panel);
+  border: 2px solid;
+  padding: 20px 22px;
+  margin: 0 0 20px 16px;
+  transition: box-shadow 0.2s;
+}
+.timelineCard:hover {
+  box-shadow: 0 0 24px rgba(78,161,255,0.1);
+}
+
+.timelineCardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.timelineBadge {
+  display: inline-block;
+  font-size: 6px;
+  border: 1px solid;
+  padding: 2px 7px;
+  margin-bottom: 8px;
+  letter-spacing: 0.15em;
+  background: rgba(0,0,0,0.3);
+}
+
+.timelineTitle { font-size: 10px; letter-spacing: 0.06em; margin-bottom: 10px; line-height: 1.4; }
+.timelineDesc  { font-size: 7px; color: var(--muted); line-height: 2.1; }
+.timelineGif   { flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════════════════
+   FEE BREAKDOWN
+════════════════════════════════════════════════════════════ */
+.feeViz        { display: flex; flex-direction: column; gap: 28px; }
+.feeBarLabel   { font-size: 7px; color: var(--muted); text-align: center; }
+
+.feeBar {
+  display: flex;
+  height: 48px;
+  width: 100%;
+  border: 2px solid var(--border);
+  overflow: hidden;
+  font-size: 6px;
+  letter-spacing: 0.06em;
+}
+
+.feeSegYou, .feeSegPlatform, .feeSegBankr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: filter 0.2s;
+  cursor: default;
+}
+.feeSegYou:hover, .feeSegPlatform:hover, .feeSegBankr:hover { filter: brightness(1.25); }
+
+.feeSegYou      { width: 51.3%; background: rgba(44,255,183,0.2); border-right: 2px solid rgba(44,255,183,0.5); color: var(--success); }
+.feeSegPlatform { width: 5.7%;  background: rgba(255,200,87,0.18); border-right: 2px solid rgba(255,200,87,0.4); color: var(--warning); }
+.feeSegBankr    { flex: 1;      background: rgba(78,161,255,0.1); color: var(--muted); }
+.feeSegLabel    { font-size: 5px; letter-spacing: 0.1em; }
+.feeSegPct      { font-size: 9px; }
+
+.feeMathGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.feeMathCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feeMathInfo    { display: flex; flex-direction: column; gap: 4px; }
+.feeMathBig     { font-size: 16px; letter-spacing: 0.04em; }
+.feeMathSub     { font-size: 6px; color: var(--muted); }
+.feeMathFormula { font-size: 6px; color: var(--border); border-top: 1px solid var(--border); padding-top: 4px; margin-top: 2px; }
+
+/* SPLITTER FLOW DIAGRAM */
+.splitterBox {
+  padding: 22px;
+  border: 1px solid var(--border);
+  background: rgba(5,7,12,0.6);
+}
+
+.splitterDiagram {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.splitterNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 12px;
+  border: 2px solid;
+  background: var(--panel);
+  font-size: 7px;
+  text-align: center;
+  min-width: 76px;
+}
+
+.splitterArrow { font-size: 12px; color: var(--border); flex-shrink: 0; }
+.splitterSub   { font-size: 6px; color: var(--muted); }
+
+.splitterBranchItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CTA BANNER
+════════════════════════════════════════════════════════════ */
+.ctaBannerWrap { max-width: 860px; margin: 0 auto; }
+
+.ctaBanner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ctaText  { flex: 1; min-width: 200px; }
+.ctaTitle { font-size: clamp(12px, 2vw, 18px); color: var(--cyan); letter-spacing: 0.06em; margin-bottom: 8px; }
+.ctaSub   { font-size: 8px; color: var(--muted); line-height: 2; }
+.ctaBtns  { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+
+/* ════════════════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════════════════ */
+.footer {
+  position: relative;
+  z-index: 10;
+  background: rgba(3,5,10,0.99);
+  border-top: 2px solid var(--border);
+  padding: 52px 48px 28px;
+}
+
+.footerGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footerBrand   { display: flex; flex-direction: column; gap: 12px; }
+.footerLogo    { font-size: 14px; color: var(--primary); }
+.footerDesc    { font-size: 7px; color: var(--muted); line-height: 2; }
+.footerSocials { display: flex; flex-direction: column; gap: 10px; }
+
+.socialBtn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 7px; color: var(--muted);
+  text-decoration: none; transition: color 0.15s; width: fit-content;
+}
+.socialBtn:hover { color: var(--text); }
+
+.footerCol   { display: flex; flex-direction: column; gap: 11px; }
+.footerLink  { font-size: 7px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.footerLink:hover { color: var(--primary); }
+
+.chainBadge { display: flex; align-items: center; gap: 7px; font-size: 7px; color: var(--primary); }
+.footerMeta { font-size: 6px; color: var(--border); letter-spacing: 0.08em; }
+
+.footerBottom {
+  max-width: 1000px; margin: 18px auto 0;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 6px; color: var(--muted); flex-wrap: wrap; gap: 10px;
+}
+.footerBottomRight { display: flex; gap: 10px; align-items: center; }
+
+/* ════════════════════════════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════════════════════════════ */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .feeMathGrid { grid-template-columns: 1fr; }
+  .footerGrid  { grid-template-columns: 1fr 1fr; }
+  .ctaBanner   { flex-direction: column; align-items: flex-start; }
+  .ctaBtns     { align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .section          { padding: 60px 18px; }
+  .hero             { padding: 100px 18px 60px; }
+  .heroStats        { flex-direction: column; }
+  .heroStatDiv      { width: 50px; height: 1px; }
+  .heroStat         { padding: 12px 24px; }
+  .footerGrid       { grid-template-columns: 1fr; }
+  .splitterDiagram  { flex-direction: column; }
+  .splitterArrow    { transform: rotate(90deg); }
+  .splitterBranchItems { flex-direction: row; gap: 8px; }
+  .heroLine1        { font-size: 28px; }
+  .heroLine2        { font-size: 14px; }
+}

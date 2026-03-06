@@ -1,0 +1,62 @@
+.root {
+  min-height: 100vh;
+  background: var(--bg0);
+}
+.main {
+  padding: 100px 32px 60px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.title {
+  font-size: clamp(14px, 2.5vw, 22px);
+  color: var(--primary);
+  letter-spacing: 0.08em;
+}
+.loading {
+  font-size: 10px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 40px 0;
+}
+.dots { letter-spacing: 0.3em; }
+
+.tokenInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.infoVal {
+  font-size: 10px;
+  color: var(--text);
+}
+
+.errMsg {
+  font-size: 8px;
+  color: var(--error);
+  line-height: 1.8;
+}
+
+.donePanelInner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.doneTitle {
+  font-size: 10px;
+  color: var(--success);
+}

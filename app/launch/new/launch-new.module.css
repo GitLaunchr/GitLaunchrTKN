@@ -1,0 +1,52 @@
+.root {
+  min-height: 100vh;
+  background: var(--bg0);
+}
+.main {
+  padding: 100px 32px 60px;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title {
+  font-size: clamp(16px, 3vw, 24px);
+  color: var(--primary);
+  letter-spacing: 0.08em;
+}
+.sub {
+  font-size: 8px;
+  color: var(--muted);
+}
+.note {
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: rgba(11, 18, 32, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.noteList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.noteList li {
+  font-size: 7px;
+  color: var(--muted);
+  padding-left: 12px;
+  position: relative;
+}
+.noteList li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}

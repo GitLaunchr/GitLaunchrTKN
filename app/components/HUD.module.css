@@ -1,0 +1,127 @@
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(7, 11, 20, 0.82);
+  border-bottom: 2px solid var(--border);
+  backdrop-filter: blur(6px);
+  gap: 12px;
+}
+
+/* STAR BAR */
+.starBar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+}
+
+.starLabel {
+  font-size: 6px;
+  color: var(--warning);
+  letter-spacing: 0.12em;
+}
+
+.starTrack {
+  position: relative;
+  height: 10px;
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.starFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary2), var(--primary), var(--warning));
+  image-rendering: pixelated;
+  transition: width 0.5s;
+}
+
+.starCount {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5px;
+  color: var(--text);
+}
+
+/* RIGHT */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 7px;
+}
+
+.badge--primary  { border-color: var(--primary);  }
+.badge--cyan     { border-color: var(--cyan);     }
+.badge--warning  { border-color: var(--warning);  }
+.badge--success  { border-color: var(--success);  }
+
+.badgeLabel { color: var(--muted); }
+.badge--primary  .badgeValue { color: var(--primary);  }
+.badge--cyan     .badgeValue { color: var(--cyan);     }
+.badge--warning  .badgeValue { color: var(--warning);  }
+.badge--success  .badgeValue { color: var(--success);  }
+
+/* AUTH */
+.authZone {
+  display: flex;
+  align-items: center;
+}
+
+.authLoading {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.userChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.avatar {
+  image-rendering: pixelated;
+  border: 1px solid var(--border);
+}
+
+.username {
+  font-size: 7px;
+  color: var(--cyan);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .starBar { display: none; }
+  .badges  { display: none; }
+  .hud     { justify-content: flex-end; }
+}

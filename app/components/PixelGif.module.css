@@ -1,0 +1,390 @@
+.wrap {
+  position: relative;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════
+   ROCKET SCENE
+══════════════════════════════════════════════ */
+.rocketWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.rocket {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: rocketFly 2s ease-in-out infinite alternate;
+}
+
+@keyframes rocketFly {
+  0%   { bottom: 14px; }
+  100% { bottom: 26px; }
+}
+
+.rocketBody {
+  width: 16px;
+  height: 28px;
+  background: var(--primary);
+  margin: 0 auto;
+  clip-path: polygon(50% 0%, 100% 40%, 100% 100%, 0% 100%, 0% 40%);
+}
+
+.rocketWindow {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 0;
+  box-shadow: 0 0 4px var(--cyan);
+}
+
+.flame1 {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 14px;
+  background: var(--warning);
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+  animation: flicker 0.15s step-end infinite alternate;
+}
+.flame2 {
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: #fff;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+  animation: flicker 0.1s step-end infinite alternate;
+}
+@keyframes flicker {
+  0%   { transform: translateX(-50%) scaleY(1);   opacity: 1; }
+  100% { transform: translateX(-50%) scaleY(0.7); opacity: 0.7; }
+}
+
+.star1, .star2, .star3 {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--text);
+  animation: starBlink 1s step-end infinite;
+}
+.star1 { top: 8px;  left: 10px; animation-delay: 0s; }
+.star2 { top: 20px; left: 60px; animation-delay: 0.4s; }
+.star3 { top: 5px;  left: 50px; animation-delay: 0.7s; }
+@keyframes starBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════
+   CONTRACT SCENE
+══════════════════════════════════════════════ */
+.contractWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contractDoc {
+  width: 42px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: docPulse 2s ease-in-out infinite;
+}
+
+@keyframes docPulse {
+  0%, 100% { border-color: var(--border); box-shadow: none; }
+  50%       { border-color: var(--success); box-shadow: 0 0 8px rgba(44,255,183,0.4); }
+}
+
+.docLine {
+  height: 2px;
+  width: 100%;
+  background: var(--muted);
+  animation: lineReveal 2s ease-in-out infinite;
+}
+.docLine:nth-child(1) { animation-delay: 0.0s; }
+.docLine:nth-child(2) { animation-delay: 0.2s; }
+.docLine:nth-child(3) { animation-delay: 0.4s; }
+.docLine:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes lineReveal {
+  0%, 30%  { background: var(--muted); }
+  60%, 100% { background: var(--success); }
+}
+
+.checkmark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: var(--success);
+  animation: checkPop 2s ease-in-out infinite;
+}
+.checkmark::after {
+  content: "✓";
+}
+@keyframes checkPop {
+  0%, 40%  { transform: scale(0); opacity: 0; }
+  60%, 100% { transform: scale(1); opacity: 1; }
+}
+
+/* ══════════════════════════════════════════════
+   TOKEN COIN SCENE
+══════════════════════════════════════════════ */
+.tokenWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--warning), #ff9500);
+  border: 2px solid #ffdd00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(255,200,87,0.5);
+  animation: coinSpin 1.5s steps(8) infinite;
+}
+
+@keyframes coinSpin {
+  0%   { transform: scaleX(1); }
+  25%  { transform: scaleX(0.3); }
+  50%  { transform: scaleX(1); }
+  75%  { transform: scaleX(0.3); }
+  100% { transform: scaleX(1); }
+}
+
+.coinText {
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.sparkle1, .sparkle2, .sparkle3, .sparkle4 {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--warning);
+}
+.sparkle1 { top: 8px;  left: 10px; animation: sparkleAnim 1s 0.0s infinite; }
+.sparkle2 { top: 8px;  right: 10px; animation: sparkleAnim 1s 0.25s infinite; }
+.sparkle3 { bottom: 8px; left: 14px; animation: sparkleAnim 1s 0.5s infinite; }
+.sparkle4 { bottom: 8px; right: 14px; animation: sparkleAnim 1s 0.75s infinite; }
+
+@keyframes sparkleAnim {
+  0%, 100% { transform: scale(0); opacity: 0; }
+  50%       { transform: scale(1); opacity: 1; }
+}
+
+/* ══════════════════════════════════════════════
+   SPLIT SCENE
+══════════════════════════════════════════════ */
+.splitWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splitCoin {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: var(--warning);
+  border: 2px solid #ffdd00;
+  animation: splitDrop 1.8s ease-in-out infinite;
+}
+@keyframes splitDrop {
+  0%, 30% { top: 8px; opacity: 1; }
+  60%      { top: 28px; opacity: 0; }
+  61%, 100% { top: 8px; opacity: 0; }
+}
+
+.splitArrowL, .splitArrowR {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 38px;
+  animation: arrowAppear 1.8s ease-in-out infinite;
+}
+.splitArrowL {
+  left: 16px;
+  border-top: 8px solid var(--success);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+.splitArrowR {
+  right: 16px;
+  border-top: 8px solid var(--primary);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+@keyframes arrowAppear {
+  0%, 40%   { opacity: 0; }
+  60%, 90%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+
+.splitWallet1, .splitWallet2 {
+  position: absolute;
+  bottom: 8px;
+  width: 20px;
+  height: 14px;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  animation: walletFill 1.8s ease-in-out infinite;
+}
+.splitWallet1 {
+  left: 8px;
+  border-color: var(--success);
+}
+.splitWallet2 {
+  right: 8px;
+  border-color: var(--primary);
+}
+@keyframes walletFill {
+  0%, 60%  { background: var(--panel); }
+  80%, 100% { background: rgba(44,255,183,0.2); }
+}
+
+/* ══════════════════════════════════════════════
+   GITHUB SCENE
+══════════════════════════════════════════════ */
+.githubWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ghAvatar {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  border: 2px solid var(--primary2);
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: ghPulse 2s ease-in-out infinite;
+}
+@keyframes ghPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(78,161,255,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(78,161,255,0); }
+}
+
+.ghDot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  animation: dotBlink 1s step-end infinite;
+}
+@keyframes dotBlink {
+  0%, 60%  { opacity: 1; }
+  61%, 100% { opacity: 0; }
+}
+
+.ghLine1, .ghLine2 {
+  position: absolute;
+  height: 2px;
+  background: var(--muted);
+  animation: lineGrow 1.5s ease-out infinite;
+}
+.ghLine1 { width: 30px; bottom: 14px; left: 8px; animation-delay: 0s; }
+.ghLine2 { width: 20px; bottom: 10px; left: 8px; animation-delay: 0.3s; }
+@keyframes lineGrow {
+  0%   { transform: scaleX(0); transform-origin: left; }
+  50%, 100% { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ══════════════════════════════════════════════
+   LIVE SCENE
+══════════════════════════════════════════════ */
+.liveWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.liveDot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--success);
+  z-index: 2;
+}
+.liveRing1 {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--success);
+  animation: ringExpand 1.5s ease-out infinite;
+}
+.liveRing2 {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--success);
+  animation: ringExpand 1.5s ease-out 0.5s infinite;
+}
+@keyframes ringExpand {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.liveText {
+  position: absolute;
+  bottom: 8px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--success);
+  letter-spacing: 0.1em;
+  animation: liveTextBlink 1s step-end infinite;
+}
+@keyframes liveTextBlink {
+  0%, 70%  { opacity: 1; }
+  71%, 100% { opacity: 0.3; }
+}
