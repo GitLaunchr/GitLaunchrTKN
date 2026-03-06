@@ -6,7 +6,7 @@ import PixelPanel from "@/app/components/PixelPanel";
 import PixelButton from "@/app/components/PixelButton";
 import PixelGif from "@/app/components/PixelGif";
 import FaqAccordion from "@/app/components/FaqAccordion";
-import { GithubIcon, XIcon, BaseIcon, DiscordIcon } from "@/app/components/Icons";
+import { GithubIcon, XIcon, BaseIcon } from "@/app/components/Icons";
 import styles from "./page.module.css";
 
 /* ══════════════════════════════════════════════════════════════
@@ -327,18 +327,16 @@ export default function HomePage() {
             <span className={`${styles.footerLogo} glow-primary`}>GITLAUNCHR</span>
             <p className={styles.footerDesc}>
               A city of GitHub builders.<br />
-              Launch tokens on Base. Keep your fees.
+              Launch tokens whit GitHub. Keep your fees.
             </p>
             <div className={styles.footerSocials}>
               <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.socialBtn}>
                 <GithubIcon size={16} color="var(--muted)" /><span>GitHub</span>
               </a>
-              <a href="https://x.com" target="_blank" rel="noreferrer" className={styles.socialBtn}>
-                <XIcon size={16} color="var(--muted)" /><span>X / Twitter</span>
+              <a href="https://x.com/GitLaunchr" target="_blank" rel="noreferrer" className={styles.socialBtn}>
+                <XIcon size={16} color="var(--muted)" /><span>X</span>
               </a>
-              <a href="https://discord.gg" target="_blank" rel="noreferrer" className={styles.socialBtn}>
-                <DiscordIcon size={16} color="var(--muted)" /><span>Discord</span>
-              </a>
+
             </div>
           </div>
 

@@ -6,7 +6,7 @@ import PixelPanel from "@/app/components/PixelPanel";
 import PixelButton from "@/app/components/PixelButton";
 import PixelGif from "@/app/components/PixelGif";
 import FaqAccordion from "@/app/components/FaqAccordion";
-import { GithubIcon, XIcon, BaseIcon, DiscordIcon } from "@/app/components/Icons";
+import { GithubIcon, XIcon, BaseIcon } from "@/app/components/Icons";
 import styles from "./landing.module.css";
 
 /* ── DATA ─────────────────────────────────────────────────── */
@@ -368,20 +368,15 @@ export default function LandingPage() {
               Launch tokens on Base. Keep your fees.
             </p>
             <div className={styles.footerSocials}>
-              <a href="https://github.com" target="_blank" rel="noreferrer"
+              <a href="https://github.com/GitLaunchr" target="_blank" rel="noreferrer"
                 className={styles.socialBtn} aria-label="GitHub">
                 <GithubIcon size={16} color="var(--muted)" />
                 <span>GitHub</span>
               </a>
-              <a href="https://x.com" target="_blank" rel="noreferrer"
+              <a href="https://x.com/GitLaunchr" target="_blank" rel="noreferrer"
                 className={styles.socialBtn} aria-label="X">
                 <XIcon size={16} color="var(--muted)" />
-                <span>X / Twitter</span>
-              </a>
-              <a href="https://discord.gg" target="_blank" rel="noreferrer"
-                className={styles.socialBtn} aria-label="Discord">
-                <DiscordIcon size={16} color="var(--muted)" />
-                <span>Discord</span>
+                <span>X</span>
               </a>
             </div>
           </div>
@@ -411,13 +406,13 @@ export default function LandingPage() {
               <span>Base Mainnet</span>
             </div>
             <div className={styles.footerMeta}>Chain ID: 8453</div>
-            <div className={styles.footerMeta}>RPC: mainnet.base.org</div>
+            <div className={styles.footerMeta}>RPC: Ankr</div>
             <div className={styles.footerMeta}>Explorer: basescan.org</div>
           </div>
         </div>
 
         <div className={styles.footerBottom}>
-          <span>© 2025 GitLaunchr — Built on Base · Powered by Bankr</span>
+          <span>© 2026 GitLaunchr — Built on GitHub · Powered by Bankr</span>
           <div className={styles.footerBottomLinks}>
             <span className={styles.footerBottomLink}>No wallet required</span>
             <span style={{ color: "var(--border)" }}>·</span>

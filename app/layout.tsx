@@ -10,8 +10,8 @@ const pixelFont = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "GitLaunchr — Launch tokens on Base",
-  description: "A city of GitHub builders. Launch tokens on Base via Bankr — no wallet required.",
+  title: "GitLaunchr",
+  description: "A launchpad of GitHub builders. Launch tokens on Base via GitHub.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

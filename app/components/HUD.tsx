@@ -75,16 +75,15 @@ export default function HUD() {
 
       <div className={styles.right}>
         <div className={styles.hudSocials}>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.hudSocialLink} aria-label="GitHub">
+          <a href="https://github.com/GitLaunchr" target="_blank" rel="noreferrer" className={styles.hudSocialLink} aria-label="GitHub">
             <GithubIcon size={14} color="var(--muted)" />
           </a>
-          <a href="https://x.com" target="_blank" rel="noreferrer" className={styles.hudSocialLink} aria-label="X">
+          <a href="https://x.com/GitLaunchr" target="_blank" rel="noreferrer" className={styles.hudSocialLink} aria-label="X">
             <XIcon size={14} color="var(--muted)" />
           </a>
         </div>
 
         <div className={styles.badges}>
-          <HUDBadge label="DISCORD" value="105" color="primary" />
           <HUDBadge label="LIVE"    value="252" color="success" />
           <HUDBadge label="★"       value="2429" color="warning" />
         </div>
