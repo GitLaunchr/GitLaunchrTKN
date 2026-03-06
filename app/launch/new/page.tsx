@@ -16,7 +16,6 @@ export default async function LaunchNewPage() {
   }
 
   const username  = user.user_metadata?.user_name ?? user.email ?? "user";
-  const avatarUrl = user.user_metadata?.avatar_url ?? "";
 
   return (
     <div className={styles.root}>
@@ -35,10 +34,7 @@ export default async function LaunchNewPage() {
         </div>
 
         <div className={styles.content}>
-          <LaunchForm
-            username={username}
-            avatarUrl={avatarUrl}
-          />
+          <LaunchForm />
 
           <div className={styles.notes}>
             <PixelPanel label="REQUIREMENTS" variant="default">

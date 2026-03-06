@@ -85,8 +85,7 @@ export async function POST(req: NextRequest) {
   let splitterAddress: string;
   try {
     splitterAddress = await deployFeeSplitter(
-      creatorPayout,
-      process.env.PLATFORM_TREASURY_ADDRESS!
+      creatorPayout as `0x${string}`
     );
   } catch (err) {
     console.error("[launch] deploy error:", err);
