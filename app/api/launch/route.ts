@@ -6,13 +6,11 @@ import { checkLaunchRateLimit } from "@/lib/rateLimit";
 import { isValidSymbol, sanitizeString } from "@/lib/validation";
 
 export async function POST(req: NextRequest) {
-  // ── Auth ──────────────────────────────────────────────
   const { user } = await getSupabaseSession();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const githubUsername = user.user_metadata?.user_name ?? "unknown";
+  const avatarUrl      = user.user_metadata?.avatar_url ?? undefined;
 
   // ── Get or create DB user ─────────────────────────────
   let { data: dbUser } = await supabaseAdmin
@@ -30,29 +28,20 @@ export async function POST(req: NextRequest) {
 
   // ── Rate limit ────────────────────────────────────────
   const { allowed, remaining } = await checkLaunchRateLimit(dbUser.id);
-  if (!allowed) {
-    return NextResponse.json({ error: "Daily limit reached (3/day). Resets at UTC midnight.", remaining: 0 }, { status: 429 });
-  }
+  if (!allowed) return NextResponse.json({ error: "Daily limit reached (3/day). Resets at UTC midnight.", remaining: 0 }, { status: 429 });
 
   // ── Validate body ─────────────────────────────────────
-  let body: { name?: string; symbol?: string; twitterHandle?: string; creatorPayout?: string; description?: string; website?: string; };
+  let body: { name?: string; symbol?: string; twitterHandle?: string; description?: string; website?: string; };
   try { body = await req.json(); }
   catch { return NextResponse.json({ error: "Invalid JSON" }, { status: 400 }); }
 
   const name          = sanitizeString(body.name ?? "");
   const symbol        = (body.symbol ?? "").toUpperCase().trim();
   const twitterHandle = (body.twitterHandle ?? "").replace(/^@/, "").trim();
-  const creatorPayout = (body.creatorPayout ?? "").trim();
 
-  if (!name)                    return NextResponse.json({ error: "Name is required" }, { status: 400 });
-  if (!isValidSymbol(symbol))   return NextResponse.json({ error: "Symbol must be 2–8 uppercase letters" }, { status: 400 });
-
-  // Must have either twitter handle OR EVM wallet
-  const hasTwitter = twitterHandle.length > 0;
-  const hasWallet  = /^0x[0-9a-fA-F]{40}$/.test(creatorPayout);
-  if (!hasTwitter && !hasWallet) {
-    return NextResponse.json({ error: "Provide a Twitter handle or EVM wallet for fee payout" }, { status: 400 });
-  }
+  if (!name)                  return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  if (!isValidSymbol(symbol)) return NextResponse.json({ error: "Symbol must be 2–8 uppercase letters" }, { status: 400 });
+  if (!twitterHandle)         return NextResponse.json({ error: "Twitter handle is required for fee payout" }, { status: 400 });
 
   // ── Create DB row ─────────────────────────────────────
   const { data: launch, error: insertErr } = await supabaseAdmin
@@ -60,7 +49,7 @@ export async function POST(req: NextRequest) {
     .insert({
       user_id:        dbUser.id,
       name, symbol,
-      creator_payout: hasTwitter ? `@${twitterHandle}` : creatorPayout,
+      creator_payout: `@${twitterHandle}`,
       description:    sanitizeString(body.description ?? ""),
       website:        body.website ?? "",
       status:         "pending",
@@ -74,14 +63,11 @@ export async function POST(req: NextRequest) {
 
   // ── Deploy via Bankr Partner API ──────────────────────
   try {
-    const avatarUrl = user.user_metadata?.avatar_url ?? undefined;
-
     const result = await deployTokenViaBankr({
       name, symbol,
-      twitterHandle: hasTwitter ? twitterHandle : undefined,
-      creatorPayout: hasWallet  ? creatorPayout  : "0x0000000000000000000000000000000000000000",
-      description:   sanitizeString(body.description ?? ""),
-      website:       body.website ?? "",
+      twitterHandle,
+      description: sanitizeString(body.description ?? ""),
+      website:     body.website ?? "",
       githubUsername,
       avatarUrl,
     });

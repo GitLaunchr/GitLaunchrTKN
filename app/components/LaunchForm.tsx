@@ -94,22 +94,16 @@ export default function LaunchForm() {
       <PixelPanel label="FEE STRUCTURE" variant="cyan">
         <div className={styles.feeGrid}>
           <div className={styles.feeRow}>
-            <span className={styles.feeKey}>Bankr creator share</span>
-            <span className={styles.feeVal} style={{ color: "var(--primary)" }}>
-              57% of fees
-            </span>
+            <span className={styles.feeKey}>Swap fee on all trades</span>
+            <span className={styles.feeVal} style={{ color: "var(--cyan)" }}>1.2%</span>
           </div>
           <div className={styles.feeRow}>
-            <span className={styles.feeKey}>Platform cut (10% of creator share)</span>
-            <span className={styles.feeVal} style={{ color: "var(--warning)" }}>
-              −5.7%
-            </span>
+            <span className={styles.feeKey}>Your creator share</span>
+            <span className={styles.feeVal} style={{ color: "var(--primary)" }}>57%</span>
           </div>
           <div className={`${styles.feeRow} ${styles.feeRowNet}`}>
-            <span className={styles.feeKey}>Net to you</span>
-            <span className={styles.feeVal} style={{ color: "var(--success)" }}>
-              51.3% of total fees
-            </span>
+            <span className={styles.feeKey}>Goes directly to your @twitter</span>
+            <span className={styles.feeVal} style={{ color: "var(--success)" }}>claimable at bankr.bot</span>
           </div>
         </div>
       </PixelPanel>

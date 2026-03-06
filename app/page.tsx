@@ -86,7 +86,7 @@ async function getStats() {
   return { tokenCount: tokensRes.count ?? 0, userCount: usersRes.count ?? 0 };
 }
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function HomePage() {
   const { tokenCount, userCount } = await getStats();
@@ -102,12 +102,12 @@ export default async function HomePage() {
         <HUD />
 
         <section className={styles.hero}>
-          <div className={styles.heroPre}>PREMIUM LAUNCHPAD · FOR GITHUB ACCOUNTS</div>
+          <div className={styles.heroPre}>BUILT ON BASE · POWERED BY BANKR</div>
 
           <h1 className={styles.heroTitle}>
             <span className={styles.heroLine1}>GITLAUNCHR</span>
             <span className={styles.heroLine2}>
-              Launch tokens.<br />No more anon devs.
+              Launch tokens.<br />Keep your fees.
             </span>
           </h1>
 
@@ -156,7 +156,7 @@ export default async function HomePage() {
           <div className={styles.sectionHead}>
             <span className={styles.sectionTag}>// HOW IT WORKS</span>
             <h2 className={styles.sectionTitle}>From GitHub to Base in 4 steps</h2>
-            <p className={styles.sectionSub}>No private keys in the browser. Just sign in and launch.</p>
+            <p className={styles.sectionSub}>No MetaMask. No private keys in the browser. No manual gas. Just sign in and launch.</p>
           </div>
 
           <div className={styles.timeline}>
@@ -346,7 +346,7 @@ export default async function HomePage() {
                 <GithubIcon size={16} color="var(--muted)" /><span>GitHub</span>
               </a>
               <a href="https://x.com/GitLaunchr" target="_blank" rel="noreferrer" className={styles.socialBtn}>
-                <XIcon size={16} color="var(--muted)" /><span>X / Twitter</span>
+                <XIcon size={16} color="var(--muted)" /><span>X</span>
               </a>
             </div>
           </div>
@@ -374,7 +374,7 @@ export default async function HomePage() {
               <span>Base Mainnet</span>
             </div>
             <div className={styles.footerMeta}>Chain ID: 8453</div>
-            <div className={styles.footerMeta}>RPC: Ankr</div>
+            <div className={styles.footerMeta}>RPC: mainnet.base.org</div>
             <div className={styles.footerMeta}>Explorer: basescan.org</div>
           </div>
         </div>
