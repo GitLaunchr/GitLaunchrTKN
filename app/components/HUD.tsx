@@ -6,6 +6,7 @@ import type { User } from "@supabase/supabase-js";
 import { createSupabaseBrowser } from "@/lib/supabase";
 import styles from "./HUD.module.css";
 import PixelButton from "./PixelButton";
+import Link from "next/link";
 import { GithubIcon, XIcon } from "./Icons";
 
 interface HUDBadgeProps {
@@ -100,17 +101,19 @@ export default function HUD() {
 
           {!loading && user && (
             <div className={styles.userChip}>
-              {avatarUrl && (
-                <Image
-                  src={avatarUrl}
-                  alt={username}
-                  width={22}
-                  height={22}
-                  className={styles.avatar}
-                  unoptimized
-                />
-              )}
-              <span className={styles.username}>@{username}</span>
+              <Link href="/profile" className={styles.userChipLink}>
+                {avatarUrl && (
+                  <Image
+                    src={avatarUrl}
+                    alt={username}
+                    width={22}
+                    height={22}
+                    className={styles.avatar}
+                    unoptimized
+                  />
+                )}
+                <span className={styles.username}>@{username}</span>
+              </Link>
               <PixelButton variant="ghost" size="sm" onClick={handleSignOut}>✕</PixelButton>
             </div>
           )}

@@ -125,3 +125,14 @@
   .badges  { display: none; }
   .hud     { justify-content: flex-end; }
 }
+
+.userChipLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.userChipLink:hover .username {
+  color: var(--primary);
+}

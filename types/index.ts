@@ -13,6 +13,11 @@ export interface User {
   github_id: string;
   username: string;
   avatar_url: string;
+  // editable profile fields
+  twitter:    string | null;
+  farcaster:  string | null;
+  website:    string | null;
+  bio:        string | null;
   created_at: string;
 }
 
