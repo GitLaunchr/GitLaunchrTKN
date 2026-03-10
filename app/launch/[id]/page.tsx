@@ -282,7 +282,7 @@ export default function LaunchStatusPage() {
                   </a>
                   {isFlywheel && (
                     <a href={`https://app.doppler.lol/tokens/base/${data.token_address}`} target="_blank" rel="noreferrer">
-                      <PixelButton variant="cyan" size="md">TRADE ON DOPPLER ↗</PixelButton>
+                      <PixelButton variant="primary" size="md">TRADE ON DOPPLER ↗</PixelButton>
                     </a>
                   )}
                   <Link href="/launch/new">
