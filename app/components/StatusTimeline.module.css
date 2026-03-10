@@ -18,10 +18,12 @@
   background: var(--border);
   transition: background 0.3s;
 }
-
 .connector--lit {
   background: var(--primary);
   box-shadow: 0 0 6px var(--primary);
+}
+.connector--failed {
+  background: var(--error);
 }
 
 /* STEP */
@@ -33,15 +35,9 @@
   opacity: 0.4;
   transition: opacity 0.3s;
 }
-
 .step--done,
-.step--active {
-  opacity: 1;
-}
-
-.step--failed {
-  opacity: 0.7;
-}
+.step--active { opacity: 1; }
+.step--failed  { opacity: 0.7; }
 
 /* DOT */
 .dot {
@@ -56,28 +52,24 @@
   flex-shrink: 0;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
-
 .dot--done {
   border-color: var(--success);
   color: var(--success);
-  box-shadow: 0 0 10px rgba(44, 255, 183, 0.3);
+  box-shadow: 0 0 10px rgba(44,255,183,0.3);
 }
-
 .dot--active {
   border-color: var(--cyan);
   color: var(--cyan);
-  box-shadow: 0 0 10px rgba(79, 227, 255, 0.4);
+  box-shadow: 0 0 10px rgba(79,227,255,0.4);
 }
-
 .dot--pending {
   border-color: var(--border);
   color: var(--muted);
 }
-
 .dot--failed {
   border-color: var(--error);
   color: var(--error);
-  box-shadow: 0 0 10px rgba(255, 78, 106, 0.3);
+  box-shadow: 0 0 10px rgba(255,78,106,0.3);
 }
 
 /* INFO */
@@ -87,18 +79,19 @@
   gap: 3px;
   padding-top: 3px;
 }
-
 .stepLabel {
   font-size: 8px;
   color: var(--text);
 }
-
 .addr {
   font-size: 7px;
   color: var(--muted);
   font-family: monospace;
 }
-
+.activeDots {
+  font-size: 8px;
+  color: var(--muted);
+}
 .tokenLink {
   font-size: 7px;
   color: var(--success);
@@ -108,12 +101,40 @@
   text-decoration: underline;
   color: var(--cyan);
 }
-
 .errorMsg {
   margin-top: 12px;
   font-size: 8px;
   color: var(--error);
   padding: 8px;
   border: 1px solid var(--error);
-  background: rgba(255, 78, 106, 0.08);
+  background: rgba(255,78,106,0.08);
+}
+.blink {
+  display: inline-block;
+  transition: opacity 0.1s;
+}
+
+/* ── Progress bar ── */
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.progressTrack {
+  flex: 1;
+  height: 6px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  transition: width 0.6s ease, background 0.3s;
+}
+.progressLabel {
+  font-size: 8px;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
 }

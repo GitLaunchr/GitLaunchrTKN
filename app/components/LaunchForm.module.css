@@ -1,92 +1,64 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-
-.row2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.err {
-  font-size: 7px;
-  color: var(--error);
-}
-
-.feeGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.feeRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 8px;
-  gap: 8px;
-}
-
-.feeKey  { color: var(--muted); }
+.form { display: flex; flex-direction: column; gap: 20px; }
+.group { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.err { font-size: 7px; color: var(--error); }
+.feeGrid { display: flex; flex-direction: column; gap: 8px; }
+.feeRow { display: flex; justify-content: space-between; align-items: center; font-size: 8px; gap: 8px; }
+.feeKey  { color: var(--muted); display: flex; align-items: center; gap: 6px; }
 .feeVal  { font-size: 9px; }
-
-.feeRowNet {
-  border-top: 1px solid var(--border);
-  padding-top: 8px;
-  margin-top: 4px;
-}
-
-.apiError {
-  padding: 10px 12px;
-  border: 2px solid var(--error);
-  background: rgba(255, 78, 106, 0.08);
-  font-size: 8px;
-  color: var(--error);
-  line-height: 1.7;
-}
-
-@media (max-width: 600px) {
-  .row2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.inputPrefix {
-  display: flex;
-  align-items: center;
-  border: 2px solid var(--border);
-  background: var(--input-bg, rgba(0,0,0,0.4));
-  transition: border-color 0.15s;
-}
+.feeRowNet { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+.apiError { padding: 10px 12px; border: 2px solid var(--error); background: rgba(255,78,106,0.08); font-size: 8px; color: var(--error); line-height: 1.7; }
+@media (max-width: 600px) { .row2 { grid-template-columns: 1fr; } }
+.inputPrefix { display: flex; align-items: center; border: 2px solid var(--border); background: var(--input-bg, rgba(0,0,0,0.4)); transition: border-color 0.15s; }
 .inputPrefix:focus-within { border-color: var(--primary); }
-.inputPrefix input {
-  flex: 1;
-  border: none !important;
-  background: transparent !important;
-  outline: none;
-  padding: 10px 12px;
-}
-.prefix {
-  font-size: 11px;
-  color: var(--primary);
-  padding: 0 0 0 12px;
-  user-select: none;
-}
-.hint {
-  font-size: 6px;
-  color: var(--muted);
-  line-height: 2;
-  margin-top: 4px;
-  display: block;
-}
+.inputPrefix input { flex: 1; border: none !important; background: transparent !important; outline: none; padding: 10px 12px; }
+.prefix { font-size: 11px; color: var(--primary); padding: 0 0 0 12px; user-select: none; }
+.hint { font-size: 6px; color: var(--muted); line-height: 2; margin-top: 4px; display: block; }
 .hint a { color: var(--primary); text-decoration: none; }
 .hint a:hover { text-decoration: underline; }
+
+/* slide transition */
+.slideDown { overflow: hidden; transition: max-height 0.28s ease, opacity 0.22s ease; }
+
+/* pairing toggle */
+.pairingToggle { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--border); background: rgba(0,0,0,0.4); position: relative; overflow: hidden; }
+.pairingSlider { position: absolute; top: 0; bottom: 0; width: 50%; transition: left 0.2s ease, background 0.2s ease; pointer-events: none; }
+.pairingBtn { padding: 14px 10px; background: transparent; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; position: relative; z-index: 1; }
+.pairingBtnLabel { font-family: var(--font-pixel); font-size: 9px; color: var(--muted); transition: color 0.2s; }
+.pairingBtnSub { font-size: 8px; color: var(--muted); opacity: 0.4; transition: color 0.2s, opacity 0.2s; }
+.pairingBtnActiveBlue .pairingBtnLabel, .pairingBtnActiveBlue .pairingBtnSub { color: var(--primary); opacity: 1; }
+.pairingBtnActiveGreen .pairingBtnLabel, .pairingBtnActiveGreen .pairingBtnSub { color: var(--success); opacity: 1; }
+
+/* flywheel panel */
+.flywheelPanel { border: 2px solid rgba(44,255,183,0.35); background: rgba(44,255,183,0.04); padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.flywheelTitle { font-family: var(--font-pixel); font-size: 8px; color: var(--success); letter-spacing: 0.1em; }
+.flywheelDesc { font-size: 9px; color: var(--muted); line-height: 1.8; margin: 0; }
+.green { color: var(--success); }
+.flywheelSection { border-top: 1px solid rgba(44,255,183,0.2); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.flywheelSectionLabel { font-family: var(--font-pixel); font-size: 7px; color: var(--muted); letter-spacing: 0.1em; }
+
+/* mini toggle */
+.miniToggle { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(44,255,183,0.25); }
+.miniToggleBtn { padding: 10px 8px; background: transparent; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: background 0.15s; }
+.miniToggleBtn:first-child { border-right: 1px solid rgba(44,255,183,0.2); }
+.miniToggleBtnActive { background: rgba(44,255,183,0.1); }
+.miniToggleBtnLabel { font-family: var(--font-pixel); font-size: 8px; color: var(--muted); transition: color 0.15s; }
+.miniToggleBtnSub { font-size: 8px; color: var(--muted); opacity: 0.4; transition: all 0.15s; }
+.miniToggleBtnActive .miniToggleBtnLabel, .miniToggleBtnActive .miniToggleBtnSub { color: var(--success); opacity: 1; }
+
+/* github input */
+.githubInput { display: flex; align-items: center; border: 2px solid rgba(44,255,183,0.3); background: rgba(0,0,0,0.4); transition: border-color 0.15s; }
+.githubInput:focus-within { border-color: var(--success); }
+.githubIcon { padding: 0 6px 0 12px; font-size: 13px; }
+.githubBase { font-size: 9px; color: rgba(44,255,183,0.6); padding-right: 4px; font-family: monospace; }
+.githubInputField { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-size: 11px; padding: 10px 12px 10px 0; font-family: monospace; }
+
+/* fee split */
+.dot { width: 6px; height: 6px; display: inline-block; flex-shrink: 0; }
+.dotBlue  { background: var(--primary); }
+.dotGreen { background: var(--success); }
+.dotMuted { background: var(--muted); }
+.feeValBlue  { color: var(--primary) !important; }
+.feeValGreen { color: var(--success) !important; }
+
+.flywheelNote { background: rgba(44,255,183,0.06); border: 1px solid rgba(44,255,183,0.15); padding: 8px 10px; font-size: 8px; color: var(--success); line-height: 1.7; }

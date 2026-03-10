@@ -20,6 +20,10 @@
   color: var(--primary);
   letter-spacing: 0.08em;
 }
+.titleFlywheel {
+  color: var(--success);
+  text-shadow: 0 0 16px rgba(44,255,183,0.4);
+}
 .loading {
   font-size: 10px;
   color: var(--cyan);
@@ -49,6 +53,17 @@
   font-size: 8px;
   color: var(--error);
   line-height: 1.8;
+}
+
+.failPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.failActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .donePanelInner {

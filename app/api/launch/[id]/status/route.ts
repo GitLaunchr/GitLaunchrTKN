@@ -31,15 +31,20 @@ export async function GET(
 
   if (error || !launch) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  // Already terminal — return as-is
-  if (TERMINAL.includes(launch.status as LaunchStatus)) {
+  // ── Flywheel mode — no Bankr polling needed ────────────
+  // The status page handles its own simulation client-side.
+  // We just return the launch data with pairing field.
+  if (launch.pairing === "gitlaunchr") {
     return NextResponse.json(launch);
   }
 
-  // No job yet — still pending
+  // Already terminal — return as-is
+  if (TERMINAL.includes(launch.status as LaunchStatus)) return NextResponse.json(launch);
+
+  // No job yet
   if (!launch.bankr_job_id) return NextResponse.json(launch);
 
-  // Poll Bankr for job status
+  // ── Poll Bankr (Bankr mode only) ───────────────────────
   const apiKey = process.env.BANKR_API_KEY;
   if (!apiKey) return NextResponse.json(launch);
 
@@ -53,7 +58,7 @@ export async function GET(
 
     const job = await res.json();
 
-    let newStatus: LaunchStatus = launch.status as LaunchStatus;
+    let newStatus: LaunchStatus     = launch.status as LaunchStatus;
     let tokenAddress: string | null = launch.token_address ?? null;
 
     if (job.status === "pending" || job.status === "processing") {
@@ -61,12 +66,11 @@ export async function GET(
     } else if (job.status === "completed") {
       const text = job.response ?? job.output ?? "";
       tokenAddress = extractTokenAddress(text);
-      newStatus = tokenAddress ? "done" : "failed";
+      newStatus    = tokenAddress ? "done" : "failed";
     } else if (job.status === "failed") {
       newStatus = "failed";
     }
 
-    // Update DB if changed
     if (newStatus !== launch.status || tokenAddress !== launch.token_address) {
       await supabaseAdmin.from("launch_requests").update({
         status:        newStatus,
